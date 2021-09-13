@@ -17,9 +17,10 @@ export default function createDreamTeam(members) {
   let s = "";
   members=members.sort();
   for(let i=0;i<members.length;i++){
-      if(typeof(members[i]) == "string"){
-          s+=members[i].substring(0,1);
+      if(typeof(members[i]) == "string"&&members[i]!=" "){
+          s+=members[i].substring(0,1);          
       }
   }
+s.toUpperCase;
 return s||false;
 }
