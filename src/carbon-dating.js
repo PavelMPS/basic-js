@@ -17,7 +17,7 @@ const HALF_LIFE_PERIOD = 5730;
  * dateSample('WOOT!') => false
  *
  */
-export default function dateSample(/* sampleActivity */) {
+export default function dateSample(sampleActivity) {
   let t = Math.ceil((Math.log(MODERN_ACTIVITY/sampleActivity))/(Math.LN2/HALF_LIFE_PERIOD));
   return t||false;
 }

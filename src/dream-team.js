@@ -15,8 +15,8 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default function createDreamTeam(members) {
   let s = "";
-  members.sort();
-  for(i=0;i<members.length;i++){
+  members=members.sort();
+  for(let i=0;i<members.length;i++){
       if(typeof(members[i]) == "string"){
           s+=members[i].substring(0,1);
       }
