@@ -5,99 +5,37 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default {
-  chain: [],
+  chain: '',
   getLength() {
-    return this.chain.length;
+    return this.chain.split('~~').length;
   },
   addLink(value) {
     (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
     return this;
   },
   removeLink(position) {
-    if(typeof(position)!=='number'){
-      this.chain = [];
-      throw new Error(`You can't remove incorrect link!`);
-    }
+    if(typeof(position)!='number'){
+    throw new Error(`You can't remove incorrect link!`)   
+  }
+    position = position -1;
     if(position>=this.getLength()||position<0){
-      throw new Error(`You can't remove incorrect link!`);
-    }
-      this.chain.splice(position, 1);  
-      return this;  
+    throw new Error(`You can't remove incorrect link!`)
+  }
+    let arr = this.chain.split('~~');
+    arr.splice(position, 1)
+    this.chain=arr.join('~~');  
+    return this;
   },
-  reverseChain() { 
-    this.chain.reverse();
+  reverseChain() {
+    let arr = this.chain.split('~~').reverse();
+    arr.shift();
+    arr.push('');
+    this.chain = arr.join('~~');
     return this;
   },
   finishChain() {
-    let fullChain = chain.join('')
-    this.chain = [];
+    let fullChain = this.chain.slice(0, -2);
+    this.chain = '';
     return fullChain;
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const chainMaker = {
-//   chain: '',
-//   getLength: function() {
-//     return (this.chain =='')? 0 : this.chain.split('~~').length;
-//   },
-//   addLink: function(value) {
-//    return (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
-//   },
-//   removeLink: function(position) {
-//     if(position>this.getLength()||position<this.getLength||position!=Number){
-//       alert(`You can't remove incorrect link!`)
-//     }else{
-//       let arr = this.chain.split('~~').splice(position, 1)
-//       this.chain = arr.join('~~');
-//     }    
-//   },
-//   reverseChain: function() {
-//     let arr = this.chain.split('~~').reverse();
-//     this.chain = arr.join('~~');
-//   },
-//   finishChain: function() {
-//     let fullChain = chain.slice(0, -2);
-//     this.chain = '';
-//     return fullChain;
-//   }
-// };
-
-
-
-// getLength() {
-//   throw new NotImplementedError('Not implemented');
-//   // remove line with error and write your code here
-// },
-// addLink(/* value */) {
-//   throw new NotImplementedError('Not implemented');
-//   // remove line with error and write your code here
-// },
-// removeLink(/* position */) {
-//   throw new NotImplementedError('Not implemented');
-//   // remove line with error and write your code here
-// },
-// reverseChain() {
-//   throw new NotImplementedError('Not implemented');
-//   // remove line with error and write your code here
-// },
-// finishChain() {
-//   throw new NotImplementedError('Not implemented');
-//   // remove line with error and write your code here
-// }
