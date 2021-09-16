@@ -4,7 +4,7 @@ import { NotImplementedError } from '../extensions/index.js';
  * Implement chainMaker object according to task description
  * 
  */
-export default chainMaker = {
+export default {
   chain: '',
   getLength: function() {
     return (this.chain =='')? 0 : this.chain.split('~~').length;
