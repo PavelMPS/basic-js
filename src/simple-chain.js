@@ -15,7 +15,7 @@ export default {
   },
   removeLink(position) {
     if(position>this.getLength()||position<this.getLength||typeof(position)!=='number'){
-      alert(`You can't remove incorrect link!`)
+      throw new Error(`You can't remove incorrect link!`);
     }else{
       this.chain.splice(position, 1);
     }  
