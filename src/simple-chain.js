@@ -5,14 +5,14 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 const chainMaker = {
-  chain:'',
-  getLength() {
+  chain: '',
+  getLength: function() {
     return (this.chain =='')? 0 : this.chain.split('~~').length;
   },
-  addLink(value) {
+  addLink: function(value) {
    return (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
   },
-  removeLink(position) {
+  removeLink: function(position) {
     if(position>this.getLength()||position<this.getLength||position!=Number){
       alert(`You can't remove incorrect link!`)
     }else{
@@ -20,11 +20,11 @@ const chainMaker = {
       this.chain = arr.join('~~');
     }    
   },
-  reverseChain() {
+  reverseChain: function() {
     let arr = this.chain.split('~~').reverse();
     this.chain = arr.join('~~');
   },
-  finishChain() {
+  finishChain: function() {
     let fullChain = chain.slice(0, -2);
     this.chain = '';
     return fullChain;
