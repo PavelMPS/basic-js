@@ -18,11 +18,12 @@ export default {
       alert(`You can't remove incorrect link!`)
     }else{
       this.chain.splice(position, 1);
-    }    
+    }  
+    return this;  
   },
-  reverseChain: function() {
-    
+  reverseChain: function() { 
     this.chain.reverse();
+    return this;
   },
   finishChain: function() {
     let fullChain = chain.join('')
