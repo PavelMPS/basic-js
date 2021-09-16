@@ -6,14 +6,14 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default {
   chain: [],
-  getLength: function() {
+  getLength() {
     return this.chain.length;
   },
-  addLink: function(value) {
+  addLink(value) {
     (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
     return this;
   },
-  removeLink: function(position) {
+  removeLink(position) {
     if(position>this.getLength()||position<this.getLength||typeof(position)!=='number'){
       alert(`You can't remove incorrect link!`)
     }else{
@@ -21,11 +21,11 @@ export default {
     }  
     return this;  
   },
-  reverseChain: function() { 
+  reverseChain() { 
     this.chain.reverse();
     return this;
   },
-  finishChain: function() {
+  finishChain() {
     let fullChain = chain.join('')
     this.chain = '';
     return fullChain;
