@@ -14,12 +14,15 @@ export default {
     return this;
   },
   removeLink(position) {
-    if(position>this.getLength()||position<this.getLength||typeof(position)!=='number'){
+    if(typeof(position)!=='number'){
+      this.chain = [];
       throw new Error(`You can't remove incorrect link!`);
-    }else{
-      this.chain.splice(position, 1);
-    }  
-    return this;  
+    }
+    if(position>=this.getLength()||position<0){
+      throw new Error(`You can't remove incorrect link!`);
+    }
+      this.chain.splice(position, 1);  
+      return this;  
   },
   reverseChain() { 
     this.chain.reverse();
@@ -27,7 +30,7 @@ export default {
   },
   finishChain() {
     let fullChain = chain.join('')
-    this.chain = '';
+    this.chain = [];
     return fullChain;
   }
 };
