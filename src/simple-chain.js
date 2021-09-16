@@ -10,10 +10,11 @@ export default {
     return this.chain.length;
   },
   addLink: function(value) {
-   return (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
+    (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
+    return this;
   },
   removeLink: function(position) {
-    if(position>this.getLength()||position<this.getLength||position!=Number){
+    if(position>this.getLength()||position<this.getLength||typeof(position)!=='number'){
       alert(`You can't remove incorrect link!`)
     }else{
       this.chain.splice(position, 1);
