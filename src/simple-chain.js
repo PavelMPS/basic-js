@@ -11,12 +11,12 @@ export default chainMaker={
     	
   },
   addLink(value) {
-    (value!=undefined)? this.chain += `( ${value} )~~`:this.chain += `()~~`;
+    (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
     return this;
   },
   removeLink(position) {
-    if(typeof(position)!='number'){
-    throw new Error(`You can't remove incorrect link!`)   
+    if(!Number(position)){
+    throw new Error('You can\'t remove incorrect link!')   
   }
     position = position -1;
     if(position>=this.getLength()||position<0){
