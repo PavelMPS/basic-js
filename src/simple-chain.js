@@ -7,7 +7,8 @@ import { NotImplementedError } from '../extensions/index.js';
 export default {
   chain: '',
   getLength() {
-    return this.chain.split('~~').length;
+    return this.chain.split('~~').length - 1;
+    	
   },
   addLink(value) {
     (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
