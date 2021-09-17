@@ -11,7 +11,7 @@ export default chainMaker={
     	
   },
   addLink(value) {
-    (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
+    (value!=undefined)? this.chain += `( ${value} )~~`:this.chain += `()~~`;
     return this;
   },
   removeLink(position) {
