@@ -5,38 +5,29 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default {
-  chain: '',
-  getLength() {
-    return this.chain.split('~~').length - 1;
-    	
-  },
-  addLink(value) {
-    (value!=undefined)? this.chain += `(${value})~~`:this.chain += `()~~`;
-    return this;
-  },
-  removeLink(position) {
-    if(!Number(position)){
-    throw new Error('You can\'t remove incorrect link!')   
-  }
-    position = position -1;
-    if(position>=this.getLength()||position<0){
-    throw new Error(`You can't remove incorrect link!`)
-  }
-    let arr = this.chain.split('~~');
-    arr.splice(position, 1)
-    this.chain=arr.join('~~');  
-    return this;
-  },
-  reverseChain() {
-    let arr = this.chain.split('~~').reverse();
-    arr.shift();
-    arr.push('');
-    this.chain = arr.join('~~');
-    return this;
-  },
-  finishChain() {
-    let fullChain = this.chain.slice(0, -2);
-    this.chain = '';
-    return fullChain;
-  }
+    chain: [],
+    getLength(){
+      return this.chain.length;
+    },
+    addLink(value){
+      (value!='')?this.chain.push(`(${value})~~`):this.chain.push('()~~');
+      return this;
+    },
+    removeLink(position){
+      if(position<=0||position>this.chain.length||isNaN(position)){
+        throw new Error('You can\'t remove incorrect link!')
+      }
+     
+      this.chain = this.chain.slice(0,position-1).concat(this.chain.slice(position));
+      return this;
+    },
+    reverseChain(){
+      this.chain.reverse();
+      return this;
+    },
+    finishChain(){
+      let fullChain = this.chain.join('').slice(0,-2)
+      this.chain = [];
+      return fullChain;
+    }
 };
