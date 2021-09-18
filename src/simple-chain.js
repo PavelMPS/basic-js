@@ -10,12 +10,16 @@ export default {
   getLength() {
     return this.chain.length;
   },
-  addLink(value){
-    (value=='')?this.chain.push('( )~~'):this.chain.push(`( ${value} )~~`)
+  addLink(value) {
+    if (value!==''){
+      this.chain.push(`( ${value} )~~`);
+    } else {
+      this.chain.push("( )~~");
+    } 
     return this;
   },
   removeLink(position){
-    if ( (position <= 0) || (position > this.chain.length)||(isNaN(position))){
+    if ((position<=0)||(position>this.chain.length)||(isNaN(position))){
       this.chain=[];
       throw new Error('You can\'t remove incorrect link!');
     }
@@ -27,7 +31,8 @@ export default {
     return this;
   },
   finishChain(){
-    let fullChain = this.chain.join('').slice(0,fullChain.length-2);
+    let fullChain = this.chain.join('');
+    fullChain=fullChain.slice(0,fullChain.length-2);
     this.chain=[];
     return fullChain;
   }
