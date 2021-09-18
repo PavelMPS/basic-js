@@ -26,7 +26,8 @@ export default {
       return this;
     },
     finishChain(){
-      let fullChain = this.chain.join('').slice(0,-2)
+      let fullChain = this.chain.join('');
+      fullChain=fullChain.slice(0, fullChain.length-2);
       this.chain = [];
       return fullChain;
     }
