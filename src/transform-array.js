@@ -14,7 +14,10 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default function transform(arr) {
-     let arr1 = arr;
+     if(!Array.isArray(arr)){
+          throw new Error("'arr' parameter must be an instance of the Array!");
+     }
+     let arr1 = arr.slice();
      let x;
      if (Array.isArray(arr)) {
           for (let i = 0; i < arr.length; i++) {
